@@ -1,27 +1,56 @@
 <template>
   <div class="home">
+    <h3>{{ counterData.title }}:</h3>
+
     <div>
       <button @click="decreaseCounter" class="btn">-</button>
-      <span class="counter">{{ counter }}</span>
+      <span class="counter">{{ counterData.count }}</span>
       <button @click="increaseCounter" class="btn">+</button>
+    </div>
+
+    <div class="edit">
+      <h4>Edit Counter title:</h4>
+      <input v-model="counterData.title" type="text" />
     </div>
   </div>
 </template>
 
 <!--composition rigth way-->
 <script setup>
-import { ref } from 'vue';
+import { reactive } from 'vue';
 
-const counter = ref(0);
+// const counter = ref(0),
+//   counterTitle = ref('My Counter');
+
+const counterData = reactive({
+  count: 0,
+  title: 'My counter',
+});
 
 const increaseCounter = () => {
-  counter.value++;
+  counterData.count++;
 };
 
 const decreaseCounter = () => {
-  counter.value--;
+  counterData.count--;
 };
 </script>
+
+<style>
+.home {
+  text-align: center;
+  padding: 2em;
+}
+.btn,
+.counter {
+  font-size: 3em;
+  margin: 0.5em;
+}
+
+.edit {
+  margin-top: 3em;
+}
+</style>
 
 <!--composition old way
 <script>
@@ -69,15 +98,3 @@ export default {
 }
 </script>
 -->
-
-<style>
-.home {
-  text-align: center;
-  padding: 2em;
-}
-.btn,
-.counter {
-  font-size: 3em;
-  margin: 0.5em;
-}
-</style>
