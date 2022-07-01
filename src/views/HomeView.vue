@@ -21,36 +21,43 @@
 
 <!--composition rigth way-->
 <script setup>
-import { reactive, computed, watch } from 'vue';
+/*
+  imports
+*/
+  import { reactive, computed, watch } from 'vue';
 
-// const counter = ref(0),
-//   counterTitle = ref('My Counter');
+/*
+  something
+*/
 
-const counterData = reactive({
-  count: 0,
-  title: 'My counter',
-});
+/*
+  counter
+*/
+  const counterData = reactive({
+    count: 0,
+    title: 'My counter',
+  });
 
-watch(() => counterData.count, (newCount) => {
-  if (newCount === 20) {
-    alert('Congratz')
-  }
-})
+  watch(() => counterData.count, (newCount) => {
+    if (newCount === 20) {
+      alert('Congratz')
+    }
+  })
 
-const oddOrEven = computed(() => {
-  if (counterData.count % 2 === 0) {
-    return 'even';
-  }
-  return 'odd';
-});
+  const oddOrEven = computed(() => {
+    if (counterData.count % 2 === 0) {
+      return 'even';
+    }
+    return 'odd';
+  });
 
-const increaseCounter = (amount) => {
-  counterData.count += amount;
-};
+  const increaseCounter = (amount) => {
+    counterData.count += amount;
+  };
 
-const decreaseCounter = (amount) => {
-  counterData.count -= amount;
-};
+  const decreaseCounter = (amount) => {
+    counterData.count -= amount;
+  };
 </script>
 
 <style>
