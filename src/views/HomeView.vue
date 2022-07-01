@@ -1,5 +1,5 @@
 <template>
-  <div class="home">
+  <div class="home" ref="myDiv">
     <h3>{{ counterData.title }}:</h3>
 
     <div>
