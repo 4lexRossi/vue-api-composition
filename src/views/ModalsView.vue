@@ -8,8 +8,11 @@
       </label>
     </div>
     <button @click="showModal = !showModal">Show modal</button>
-    <component v-model="showModal"
-      :is="showDarkModals ? ModalDark : Modal" title="title via props">
+    <component
+      v-model="showModal"
+      :is="showDarkModals ? ModalDark : Modal"
+      title="title via props"
+    >
       <p>
         Lorem ipsum dolor sit amet consectetur adipisicing elit. Velit unde
         corporis ab molestiae totam. Dolorum voluptatibus, magnam quaerat amet
@@ -27,6 +30,7 @@
 import { ref } from 'vue';
 import Modal from '@/components/Modal.vue';
 import ModalDark from '@/components/ModalDark.vue';
+
 /*
   modals
 */
