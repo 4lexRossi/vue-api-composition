@@ -14,7 +14,7 @@
 
     <div class="edit">
       <h4>Edit Counter title:</h4>
-      <input v-model="counterData.title" type="text" />
+      <input v-model="counterData.title" type="text" v-autofocus />
     </div>
   </div>
 </template>
@@ -24,7 +24,8 @@
 /*
   imports
 */
-  import { reactive, computed, watch } from 'vue';
+import { reactive, computed, watch, onMounted } from 'vue';
+import { vAutofocus } from '@/directives/vAutofocus';
 
 /*
   something
@@ -33,31 +34,34 @@
 /*
   counter
 */
-  const counterData = reactive({
-    count: 0,
-    title: 'My counter',
-  });
+const counterData = reactive({
+  count: 0,
+  title: 'My counter',
+});
 
-  watch(() => counterData.count, (newCount) => {
+watch(
+  () => counterData.count,
+  (newCount) => {
     if (newCount === 20) {
-      alert('Congratz')
+      alert('Congratz');
     }
-  })
+  }
+);
 
-  const oddOrEven = computed(() => {
-    if (counterData.count % 2 === 0) {
-      return 'even';
-    }
-    return 'odd';
-  });
+const oddOrEven = computed(() => {
+  if (counterData.count % 2 === 0) {
+    return 'even';
+  }
+  return 'odd';
+});
 
-  const increaseCounter = (amount) => {
-    counterData.count += amount;
-  };
+const increaseCounter = (amount) => {
+  counterData.count += amount;
+};
 
-  const decreaseCounter = (amount) => {
-    counterData.count -= amount;
-  };
+const decreaseCounter = (amount) => {
+  counterData.count -= amount;
+};
 </script>
 
 <style>
